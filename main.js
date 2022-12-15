@@ -108,18 +108,16 @@ for(let i = 0; i<posts.length; i++){
 
 document.getElementById('container').innerHTML += content
 
-let likeButton = document.getElementByclassname('js-like-button')
+let likeButton = document.getElementById('like-button')
 console.log(likeButton)
 
-for(let i= 0; i<likeButton.length;i++){
-    likeButton[i].addEventListener('click',function(){
+for(let i = 0; i<=5; i++){
+    likeButton.addEventListener('click',function(){
 
         this.classList.add('red-text')
     
     })
 
-
 }
-
 
 
