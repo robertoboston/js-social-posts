@@ -62,12 +62,22 @@ let content = ''
 for(let i = 0; i<posts.length; i++){
 
     postContent= posts[i]
+
+   let image = postContent.author.image
+
+    if(image != null){
+        image = postContent.author.image
+    }
+    else{
+        image = 'roberto'
+    }
+
     
     content += `<div class="post">
     <div class="post__header">
         <div class="post-meta">                    
             <div class="post-meta__icon">
-                <img class="profile-pic" src="${postContent.author.image}" alt="Phil Mangione">                    
+                <img class="profile-pic" src="${image}" alt="">                    
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${postContent.author.name}</div>
@@ -98,9 +108,18 @@ for(let i = 0; i<posts.length; i++){
 
 document.getElementById('container').innerHTML += content
 
-const likeButton = document.getElementById('like-button')
+let likeButton = document.getElementByclassname('js-like-button')
+console.log(likeButton)
 
-likeButton.addEventListener('click', function(){
+for(let i= 0; i<likeButton.length;i++){
+    likeButton[i].addEventListener('click',function(){
+
+        this.classList.add('red-text')
     
-j
-})
+    })
+
+
+}
+
+
+
