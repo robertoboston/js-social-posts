@@ -69,7 +69,7 @@ for(let i = 0; i<posts.length; i++){
         image = postContent.author.image
     }
     else{
-        image = 'roberto'
+        image = ''
     }
 
     
@@ -108,16 +108,43 @@ for(let i = 0; i<posts.length; i++){
 
 document.getElementById('container').innerHTML += content
 
-let likeButton = document.getElementById('like-button')
-console.log(likeButton)
+const bottoneLike = document.getElementsByClassName('like-button');
+const arrayLike = [];
 
-for(let i = 0; i<=5; i++){
-    likeButton.addEventListener('click',function(){
+for (let i=0; i<bottoneLike.length; i++){
 
-        this.classList.add('red-text')
-    
-    })
+    bottoneLike[i].addEventListener('click', function(){
 
+        const postId = this.dataset.postid;
+        const likes = document.getElementById(`like-counter-${postId}`);
+        const likesNumber = parseInt(likes.innerText);
+
+        if(arrayLike.includes(postId)){
+            likes.innerText = likesNumber-1;
+
+            const index = arrayLike.indexOf(postId);
+            if(index > -1){
+                arrayLike.splice(index,1);
+            }
+            bottoneLike[i].classList.remove("like-button--liked");
+            console.log(arrayLike);
+        }else{
+            likes.innerText = likesNumber+1;
+            arrayLike.push(postId);
+            console.log(arrayLike);
+            bottoneLike[i].classList.add("like-button--liked");
+        }
+
+    });
 }
+
+
+
+
+
+
+
+
+
 
 
